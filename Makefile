@@ -1,0 +1,36 @@
+# Compiler
+CC = gcc
+
+# Compiler flags
+CFLAGS = -Wall -Wextra -g
+
+# Targets
+CLIENT = client
+SERVER = server
+
+# Source files
+CLIENT_SRCS = client.c
+SERVER_SRCS = server.c
+
+# Object files
+CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
+SERVER_OBJS = $(SERVER_SRCS:.c=.o)
+
+# Default rule (build both)
+all: $(CLIENT) $(SERVER)
+
+# Build client
+$(CLIENT): $(CLIENT_OBJS)
+	$(CC) $(CFLAGS) -o $(CLIENT) $(CLIENT_OBJS)
+
+# Build server
+$(SERVER): $(SERVER_OBJS)
+	$(CC) $(CFLAGS) -o $(SERVER) $(SERVER_OBJS)
+
+# Generic compile rule
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean up build files
+clean:
+	rm -f $(CLIENT_OBJS) $(SERVER_OBJS) $(CLIENT) $(SERVER)
