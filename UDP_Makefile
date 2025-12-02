@@ -1,0 +1,14 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -O2
+LDFLAGS = -lrt
+
+all: udp_client udp_server
+
+udp_client: udp_client.c
+	$(CC) $(CFLAGS) -o udp_client udp_client.c $(LDFLAGS)
+
+udp_server: udp_server.c
+	$(CC) $(CFLAGS) -o udp_server udp_server.c $(LDFLAGS)
+
+clean:
+	rm -f udp_client udp_server
