@@ -5,12 +5,12 @@ CC = gcc
 CFLAGS = -Wall -Wextra -g
 
 # Targets
-CLIENT = client
-SERVER = server
+CLIENT = tcp_client
+SERVER = tcp_server
 
 # Source files
-CLIENT_SRCS = client.c
-SERVER_SRCS = server.c
+CLIENT_SRCS = tcp_client.c
+SERVER_SRCS = tcp_server.c
 
 # Object files
 CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
